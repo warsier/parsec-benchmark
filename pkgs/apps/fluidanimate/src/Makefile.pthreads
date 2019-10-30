@@ -23,7 +23,7 @@ pthreads: $(OBJS)
 
 fluidcmp: fluidcmp.cpp
 	rm -rf fluidcmp
-	$(CXX) $(CXXFLAGS) fluidcmp.cpp -o fluidcmp
+	$(CXX) $(CXXFLAGS) fluidcmp.cpp -o fluidcmp $(LDFLAGS) $(LIBS)
 
 clean:
 	rm -rf $(TARGET)

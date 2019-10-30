@@ -111,7 +111,7 @@ void ParticleFilterOMP<T>::GenerateNewParticles(int k)
 	#pragma omp parallel for
 	for(int i = 0; i < mNParticles; i++)													//distribute new particles randomly according to model stdDevs
 	{	mNewParticles[i] = mParticles[mIndex[i]];											//add new particle for each entry in each bin distributed randomly about duplicated particle
-		AddGaussianNoise(mNewParticles[i], mModel->StdDevs()[k], mRnd[i]);
+		ParticleFilter<T>::AddGaussianNoise(mNewParticles[i], mModel->StdDevs()[k], mRnd[i]);
 	}
 }
 

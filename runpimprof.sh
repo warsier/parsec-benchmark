@@ -1,0 +1,1 @@
+./bin/parsecmgmt -a run -p fluidanimate -c pimprof -n 1 -i simsmall -s "/home/warsier/Documents/pin-3.11/pin -t /home/warsier/Documents/PIMProf/test/..//build//PinInstrument//PinInstrument.so -c /home/warsier/Documents/PIMProf/test/..//defaultconfig.ini -o decision.out --"
