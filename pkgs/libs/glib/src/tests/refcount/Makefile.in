@@ -92,7 +92,7 @@ signal1_DEPENDENCIES = $(libglib) $(libgobject) $(libgthread) \
 	$(am__DEPENDENCIES_1)
 signal1_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(signal1_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_signal2_OBJECTS = signal2-signals.$(OBJEXT)
 signal2_OBJECTS = $(am_signal2_OBJECTS)
 signal2_LDADD = $(LDADD)
@@ -100,7 +100,7 @@ signal2_DEPENDENCIES = $(libglib) $(libgobject) $(libgthread) \
 	$(am__DEPENDENCIES_1)
 signal2_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(signal2_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_signal3_OBJECTS = signal3-signals.$(OBJEXT)
 signal3_OBJECTS = $(am_signal3_OBJECTS)
 signal3_LDADD = $(LDADD)
@@ -108,7 +108,7 @@ signal3_DEPENDENCIES = $(libglib) $(libgobject) $(libgthread) \
 	$(am__DEPENDENCIES_1)
 signal3_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(signal3_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -127,7 +127,7 @@ am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))
 am__v_at_0 = @
 CCLD = $(CC)
 LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))

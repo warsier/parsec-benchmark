@@ -83,19 +83,19 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 am_libhell1_la_OBJECTS = hell1.lo
 libhell1_la_OBJECTS = $(am_libhell1_la_OBJECTS)
 libhell1_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libhell1_la_LDFLAGS) $(LDFLAGS) -o $@
 am_libhell2_la_OBJECTS = hell2.lo
 libhell2_la_OBJECTS = $(am_libhell2_la_OBJECTS)
 libhell2_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libhell2_la_LDFLAGS) $(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 libhello_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libhello_la_OBJECTS = hello.lo foo.lo
 libhello_la_OBJECTS = $(am_libhello_la_OBJECTS)
 libhello_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libhello_la_LDFLAGS) $(LDFLAGS) -o $@
 @BINARY_HELLDL_TRUE@am__EXEEXT_1 = helldl$(EXEEXT)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
@@ -110,14 +110,14 @@ am_hell_static_OBJECTS = main.$(OBJEXT)
 hell_static_OBJECTS = $(am_hell_static_OBJECTS)
 hell_static_DEPENDENCIES = libhello.la
 hell_static_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(hell_static_LDFLAGS) $(LDFLAGS) -o $@
 am__helldl_SOURCES_DIST = dlmain.c
 @BINARY_HELLDL_TRUE@am_helldl_OBJECTS = dlmain.$(OBJEXT)
 helldl_OBJECTS = $(am_helldl_OBJECTS)
 helldl_LDADD = $(LDADD)
 helldl_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(helldl_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(helldl_LDFLAGS) \
 	$(LDFLAGS) -o $@
 binSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(bin_SCRIPTS)
@@ -131,7 +131,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libhell0_a_SOURCES) $(libhell1_la_SOURCES) \
 	$(libhell2_la_SOURCES) $(libhello_la_SOURCES) $(hell_SOURCES) \

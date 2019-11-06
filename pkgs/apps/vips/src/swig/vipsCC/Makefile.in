@@ -76,28 +76,28 @@ nodist_vdisplaymodule_la_OBJECTS = vdisplaymodule.lo
 vdisplaymodule_la_OBJECTS = $(nodist_vdisplaymodule_la_OBJECTS)
 vdisplaymodule_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(vdisplaymodule_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(vdisplaymodule_la_LDFLAGS) $(LDFLAGS) -o $@
 verrormodule_la_DEPENDENCIES = ../../libvipsCC/libvipsCC.la \
 	$(am__DEPENDENCIES_1)
 nodist_verrormodule_la_OBJECTS = verrormodule.lo
 verrormodule_la_OBJECTS = $(nodist_verrormodule_la_OBJECTS)
 verrormodule_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(verrormodule_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(verrormodule_la_LDFLAGS) $(LDFLAGS) -o $@
 vimagemodule_la_DEPENDENCIES = ../../libvipsCC/libvipsCC.la \
 	../../libvips/libvips.la $(am__DEPENDENCIES_1)
 nodist_vimagemodule_la_OBJECTS = vimagemodule.lo
 vimagemodule_la_OBJECTS = $(nodist_vimagemodule_la_OBJECTS)
 vimagemodule_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(vimagemodule_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(vimagemodule_la_LDFLAGS) $(LDFLAGS) -o $@
 vmaskmodule_la_DEPENDENCIES = ../../libvipsCC/libvipsCC.la \
 	$(am__DEPENDENCIES_1)
 nodist_vmaskmodule_la_OBJECTS = vmaskmodule.lo
 vmaskmodule_la_OBJECTS = $(nodist_vmaskmodule_la_OBJECTS)
 vmaskmodule_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(vmaskmodule_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(vmaskmodule_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -109,7 +109,7 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(LDCXXFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(nodist_vdisplaymodule_la_SOURCES) \
 	$(nodist_verrormodule_la_SOURCES) \

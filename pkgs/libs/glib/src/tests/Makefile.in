@@ -71,7 +71,7 @@ am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 libmoduletestplugin_a_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(AM_CFLAGS) $(CFLAGS) $(libmoduletestplugin_a_la_LDFLAGS) \
+	$(AM_CFLAGS) $(LDCFLAGS) $(libmoduletestplugin_a_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
 libmoduletestplugin_b_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(libadd_libgmodule) $(libadd_libglib)
@@ -80,7 +80,7 @@ libmoduletestplugin_b_la_OBJECTS =  \
 	$(am_libmoduletestplugin_b_la_OBJECTS)
 libmoduletestplugin_b_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(AM_CFLAGS) $(CFLAGS) $(libmoduletestplugin_b_la_LDFLAGS) \
+	$(AM_CFLAGS) $(LDCFLAGS) $(libmoduletestplugin_b_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
 @HAVE_CXX_TRUE@am__EXEEXT_1 = cxx-test$(EXEEXT)
 @PLATFORM_WIN32_TRUE@am__EXEEXT_2 = spawn-test-win32-gui$(EXEEXT)
@@ -198,7 +198,7 @@ am__DEPENDENCIES_4 = $(libgmodule) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_2)
 module_test_DEPENDENCIES = $(am__DEPENDENCIES_4) $(module_test_exp)
 module_test_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(module_test_LDFLAGS) $(LDFLAGS) -o $@
 node_test_SOURCES = node-test.c
 node_test_OBJECTS = node-test.$(OBJEXT)
@@ -253,7 +253,7 @@ spawn_test_win32_gui_OBJECTS = spawn-test-win32-gui.$(OBJEXT)
 spawn_test_win32_gui_LDADD = $(LDADD)
 spawn_test_win32_gui_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(AM_CFLAGS) $(CFLAGS) $(spawn_test_win32_gui_LDFLAGS) \
+	$(AM_CFLAGS) $(LDCFLAGS) $(spawn_test_win32_gui_LDFLAGS) \
 	$(LDFLAGS) -o $@
 testgdate_SOURCES = testgdate.c
 testgdate_OBJECTS = testgdate.$(OBJEXT)
@@ -341,7 +341,7 @@ am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))
 am__v_CC_0 = @echo "  CC    " $@;
 CCLD = $(CC)
 LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))

@@ -73,27 +73,27 @@ dld_link_la_DEPENDENCIES =
 am_dld_link_la_OBJECTS = dld_link.lo
 dld_link_la_OBJECTS = $(am_dld_link_la_OBJECTS)
 dld_link_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(dld_link_la_LDFLAGS) $(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 dlopen_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_dlopen_la_OBJECTS = dlopen.lo
 dlopen_la_OBJECTS = $(am_dlopen_la_OBJECTS)
 dlopen_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(dlopen_la_LDFLAGS) $(LDFLAGS) -o $@
 dyld_la_LIBADD =
 am_dyld_la_OBJECTS = dyld.lo
 dyld_la_OBJECTS = $(am_dyld_la_OBJECTS)
 dyld_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(dyld_la_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(dyld_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
 am_libltdl_la_OBJECTS = libltdl_la-preopen.lo libltdl_la-lt__alloc.lo \
 	libltdl_la-lt_dlloader.lo libltdl_la-lt_error.lo \
 	libltdl_la-ltdl.lo libltdl_la-slist.lo
 libltdl_la_OBJECTS = $(am_libltdl_la_OBJECTS)
 libltdl_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_la_LDFLAGS) $(LDFLAGS) -o $@
 @INSTALL_LTDL_TRUE@am_libltdl_la_rpath = -rpath $(libdir)
 am__objects_1 = libltdlc_la-preopen.lo libltdlc_la-lt__alloc.lo \
@@ -102,26 +102,26 @@ am__objects_1 = libltdlc_la-preopen.lo libltdlc_la-lt__alloc.lo \
 am_libltdlc_la_OBJECTS = $(am__objects_1)
 libltdlc_la_OBJECTS = $(am_libltdlc_la_OBJECTS)
 libltdlc_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdlc_la_LDFLAGS) $(LDFLAGS) -o $@
 @CONVENIENCE_LTDL_TRUE@am_libltdlc_la_rpath =
 load_add_on_la_LIBADD =
 am_load_add_on_la_OBJECTS = load_add_on.lo
 load_add_on_la_OBJECTS = $(am_load_add_on_la_OBJECTS)
 load_add_on_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(load_add_on_la_LDFLAGS) $(LDFLAGS) -o $@
 loadlibrary_la_LIBADD =
 am_loadlibrary_la_OBJECTS = loadlibrary.lo
 loadlibrary_la_OBJECTS = $(am_loadlibrary_la_OBJECTS)
 loadlibrary_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(loadlibrary_la_LDFLAGS) $(LDFLAGS) -o $@
 shl_load_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_shl_load_la_OBJECTS = shl_load.lo
 shl_load_la_OBJECTS = $(am_shl_load_la_OBJECTS)
 shl_load_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(shl_load_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
@@ -133,7 +133,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(dld_link_la_SOURCES) $(dlopen_la_SOURCES) \
 	$(dyld_la_SOURCES) $(libltdl_la_SOURCES) \

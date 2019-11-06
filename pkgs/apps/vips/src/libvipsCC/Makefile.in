@@ -73,7 +73,7 @@ am_libvipsCC_la_OBJECTS = VImage.lo VError.lo VDisplay.lo VMask.lo
 libvipsCC_la_OBJECTS = $(am_libvipsCC_la_OBJECTS)
 libvipsCC_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(libvipsCC_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(libvipsCC_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -85,7 +85,7 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(LDCXXFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libvipsCC_la_SOURCES)
 DIST_SOURCES = $(libvipsCC_la_SOURCES)

@@ -68,13 +68,13 @@ am_mdemo2_OBJECTS = main.$(OBJEXT)
 mdemo2_OBJECTS = $(am_mdemo2_OBJECTS)
 mdemo2_DEPENDENCIES = ../mdemo/libmlib.la
 mdemo2_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(mdemo2_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(mdemo2_LDFLAGS) \
 	$(LDFLAGS) -o $@
 am__objects_1 = main.$(OBJEXT)
 am_mdemo2_static_OBJECTS = $(am__objects_1)
 mdemo2_static_OBJECTS = $(am_mdemo2_static_OBJECTS)
 mdemo2_static_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(mdemo2_static_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp =
@@ -86,7 +86,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(mdemo2_SOURCES) $(mdemo2_static_SOURCES)
 DIST_SOURCES = $(mdemo2_SOURCES) $(mdemo2_static_SOURCES)

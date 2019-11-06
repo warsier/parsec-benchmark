@@ -69,7 +69,7 @@ libfoo_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libfoo_la_OBJECTS = foo.lo
 libfoo_la_OBJECTS = $(am_libfoo_la_OBJECTS)
 libfoo_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libfoo_la_LDFLAGS) $(LDFLAGS) -o $@
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
@@ -87,7 +87,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libfoo_la_SOURCES) $(cdemo_SOURCES)
 DIST_SOURCES = $(libfoo_la_SOURCES) $(cdemo_SOURCES)

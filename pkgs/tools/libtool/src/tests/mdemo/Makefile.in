@@ -78,31 +78,31 @@ foo1_la_DEPENDENCIES = $(am__DEPENDENCIES_1) libsub.la
 am_foo1_la_OBJECTS = foo1.lo
 foo1_la_OBJECTS = $(am_foo1_la_OBJECTS)
 foo1_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(foo1_la_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(foo1_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
 libfoo2_la_DEPENDENCIES = $(am__DEPENDENCIES_1) libsub.la
 am_libfoo2_la_OBJECTS = foo2.lo
 libfoo2_la_OBJECTS = $(am_libfoo2_la_OBJECTS)
 libfoo2_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libfoo2_la_LDFLAGS) $(LDFLAGS) -o $@
 am_libmlib_la_OBJECTS = mlib.lo
 libmlib_la_OBJECTS = $(am_libmlib_la_OBJECTS)
 libmlib_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libmlib_la_LDFLAGS) $(LDFLAGS) -o $@
 libsub_la_LIBADD =
 am_libsub_la_OBJECTS = sub.lo
 libsub_la_OBJECTS = $(am_libsub_la_OBJECTS)
 libsub_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libsub_la_LDFLAGS) $(LDFLAGS) -o $@
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_mdemo_OBJECTS = main.$(OBJEXT)
 mdemo_OBJECTS = $(am_mdemo_OBJECTS)
 mdemo_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(mdemo_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(mdemo_LDFLAGS) \
 	$(LDFLAGS) -o $@
 am__objects_1 = main.$(OBJEXT)
 am_mdemo_static_OBJECTS = $(am__objects_1)
@@ -110,7 +110,7 @@ mdemo_static_OBJECTS = $(am_mdemo_static_OBJECTS)
 am__DEPENDENCIES_2 = libsub.la "-dlopen" self "-dlopen" foo1.la \
 	"-dlopen" libfoo2.la
 mdemo_static_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(mdemo_static_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp =
@@ -122,7 +122,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(foo1_la_SOURCES) $(libfoo2_la_SOURCES) \
 	$(libmlib_la_SOURCES) $(libsub_la_SOURCES) $(mdemo_SOURCES) \

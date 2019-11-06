@@ -78,20 +78,20 @@ am_libbaz_la_OBJECTS = baz.lo
 libbaz_la_OBJECTS = $(am_libbaz_la_OBJECTS)
 libbaz_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(libbaz_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(libbaz_la_LDFLAGS) $(LDFLAGS) -o $@
 libconv_la_LIBADD =
 am_libconv_la_OBJECTS = conv.lo
 libconv_la_OBJECTS = $(am_libconv_la_OBJECTS)
 libconv_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(libconv_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(libconv_la_LDFLAGS) $(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 libfoo_la_DEPENDENCIES = libconv.la $(am__DEPENDENCIES_1)
 am_libfoo_la_OBJECTS = foo.lo
 libfoo_la_OBJECTS = $(am_libfoo_la_OBJECTS)
 libfoo_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(libfoo_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LDCXXFLAGS) $(libfoo_la_LDFLAGS) $(LDFLAGS) -o $@
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_tagdemo_OBJECTS = main.$(OBJEXT)
@@ -107,7 +107,7 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(LDCXXFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libbaz_la_SOURCES) $(libconv_la_SOURCES) \
 	$(libfoo_la_SOURCES) $(tagdemo_SOURCES)

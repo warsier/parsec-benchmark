@@ -94,20 +94,20 @@ am__dirstamp = $(am__leading_dot)dirstamp
 am_libltdl_dld_link_la_OBJECTS = libltdl/loaders/dld_link.lo
 libltdl_dld_link_la_OBJECTS = $(am_libltdl_dld_link_la_OBJECTS)
 libltdl_dld_link_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_dld_link_la_LDFLAGS) $(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 libltdl_dlopen_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libltdl_dlopen_la_OBJECTS = libltdl/loaders/dlopen.lo
 libltdl_dlopen_la_OBJECTS = $(am_libltdl_dlopen_la_OBJECTS)
 libltdl_dlopen_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_dlopen_la_LDFLAGS) $(LDFLAGS) -o $@
 libltdl_dyld_la_LIBADD =
 am_libltdl_dyld_la_OBJECTS = libltdl/loaders/dyld.lo
 libltdl_dyld_la_OBJECTS = $(am_libltdl_dyld_la_OBJECTS)
 libltdl_dyld_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_dyld_la_LDFLAGS) $(LDFLAGS) -o $@
 LIBOBJDIR = libltdl/
 am_libltdl_libltdl_la_OBJECTS =  \
@@ -119,7 +119,7 @@ am_libltdl_libltdl_la_OBJECTS =  \
 	libltdl/libltdl_libltdl_la-slist.lo
 libltdl_libltdl_la_OBJECTS = $(am_libltdl_libltdl_la_OBJECTS)
 libltdl_libltdl_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_libltdl_la_LDFLAGS) $(LDFLAGS) -o $@
 @INSTALL_LTDL_TRUE@am_libltdl_libltdl_la_rpath = -rpath $(libdir)
 am__objects_1 = libltdl/loaders/libltdl_libltdlc_la-preopen.lo \
@@ -131,26 +131,26 @@ am__objects_1 = libltdl/loaders/libltdl_libltdlc_la-preopen.lo \
 am_libltdl_libltdlc_la_OBJECTS = $(am__objects_1)
 libltdl_libltdlc_la_OBJECTS = $(am_libltdl_libltdlc_la_OBJECTS)
 libltdl_libltdlc_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_libltdlc_la_LDFLAGS) $(LDFLAGS) -o $@
 @CONVENIENCE_LTDL_TRUE@am_libltdl_libltdlc_la_rpath =
 libltdl_load_add_on_la_LIBADD =
 am_libltdl_load_add_on_la_OBJECTS = libltdl/loaders/load_add_on.lo
 libltdl_load_add_on_la_OBJECTS = $(am_libltdl_load_add_on_la_OBJECTS)
 libltdl_load_add_on_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_load_add_on_la_LDFLAGS) $(LDFLAGS) -o $@
 libltdl_loadlibrary_la_LIBADD =
 am_libltdl_loadlibrary_la_OBJECTS = libltdl/loaders/loadlibrary.lo
 libltdl_loadlibrary_la_OBJECTS = $(am_libltdl_loadlibrary_la_OBJECTS)
 libltdl_loadlibrary_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_loadlibrary_la_LDFLAGS) $(LDFLAGS) -o $@
 libltdl_shl_load_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libltdl_shl_load_la_OBJECTS = libltdl/loaders/shl_load.lo
 libltdl_shl_load_la_OBJECTS = $(am_libltdl_shl_load_la_OBJECTS)
 libltdl_shl_load_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) \
 	$(libltdl_shl_load_la_LDFLAGS) $(LDFLAGS) -o $@
 binSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(bin_SCRIPTS)
@@ -164,7 +164,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(LDCFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libltdl_dld_link_la_SOURCES) $(libltdl_dlopen_la_SOURCES) \
 	$(libltdl_dyld_la_SOURCES) $(libltdl_libltdl_la_SOURCES) \
