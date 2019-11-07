@@ -168,7 +168,8 @@ private:
   static void* threadFunc(void* _id) {
     long long int id = (long long int)_id;
 
-    _mm_setcsr(_mm_getcsr() | /*FTZ:*/ (1<<15) | /*DAZ:*/ (1<<6));
+    // PIMProf
+    // _mm_setcsr(_mm_getcsr() | /*FTZ:*/ (1<<15) | /*DAZ:*/ (1<<6));
 
     // First time...
     m_scheduler[id].suspend();

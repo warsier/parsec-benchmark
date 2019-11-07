@@ -453,9 +453,11 @@ _INLINE void Shade_Texture(RayPacket<N, LAYOUT, MULTIPLE_ORIGINS, SHADOW_RAYS> &
 void Context::init(const int mode)
 {
 #ifndef RT_EMULATE_SSE
-  const int oldMXCSR = _mm_getcsr();
+  const int oldMXCSR = 0;
+  // const int oldMXCSR = _mm_getcsr();
   const int newMXCSR = oldMXCSR | (_MM_FLUSH_ZERO_ON | _MM_MASK_MASK); // | _MM_ROUND_TOWARD_ZERO
-  _mm_setcsr(newMXCSR);
+  // PIMProf
+  // _mm_setcsr(newMXCSR);
 #endif
 
   m_geometryMode = mode;

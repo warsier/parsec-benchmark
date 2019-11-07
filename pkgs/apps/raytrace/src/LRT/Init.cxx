@@ -67,9 +67,12 @@ void lrtInit(int *argc, char **argv) {
     // flush stuff to zero, turn off denormals, set denormals to zero,
     // see http://softpixel.com/~cwright/programming/simd/sse.php for
     // which bits are which ;)
-    int oldMXCSR = _mm_getcsr();
+    // PIMProf
+    int oldMXCSR = 0;
+    // int oldMXCSR = _mm_getcsr();
     int newMXCSR = oldMXCSR | 0x80A0;
-    _mm_setcsr( newMXCSR );
+    // PIMProf
+    // _mm_setcsr( newMXCSR );
     
     LRT::ParseCmdLine(argc,argv);
 }
