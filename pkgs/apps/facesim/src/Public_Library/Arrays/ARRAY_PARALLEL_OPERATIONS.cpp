@@ -542,12 +542,12 @@ Maximum_Scaled_Magnitude_Squared_Parallel (const ARRAY<TV>& vector_array_input_1
 	return result;
 }
 //#####################################################################
-template class ARRAY_PARALLEL_OPERATIONS<VECTOR_2D<float>, float, VECTOR_2D<float> >;
-template class ARRAY_PARALLEL_OPERATIONS<VECTOR_3D<float>, float, VECTOR_3D<float> >;
-template class ARRAY_PARALLEL_OPERATIONS<VECTOR_2D<double>, double, VECTOR_2D<double> >;
-template class ARRAY_PARALLEL_OPERATIONS<VECTOR_3D<double>, double, VECTOR_3D<double> >;
-template class ARRAY_PARALLEL_OPERATIONS<MATRIX_3X3<float>, float, VECTOR_3D<float> >;
-template class ARRAY_PARALLEL_OPERATIONS<SYMMETRIC_MATRIX_3X3<float>, float, VECTOR_3D<float> >;
-template class ARRAY_PARALLEL_OPERATIONS<MATRIX_3X3<double>, double, VECTOR_3D<double> >;
-template class ARRAY_PARALLEL_OPERATIONS<SYMMETRIC_MATRIX_3X3<double>, double, VECTOR_3D<double> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<VECTOR_2D<float>, float, VECTOR_2D<float> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<VECTOR_3D<float>, float, VECTOR_3D<float> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<VECTOR_2D<double>, double, VECTOR_2D<double> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<VECTOR_3D<double>, double, VECTOR_3D<double> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<MATRIX_3X3<float>, float, VECTOR_3D<float> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<SYMMETRIC_MATRIX_3X3<float>, float, VECTOR_3D<float> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<MATRIX_3X3<double>, double, VECTOR_3D<double> >;
+template class PhysBAM::ARRAY_PARALLEL_OPERATIONS<SYMMETRIC_MATRIX_3X3<double>, double, VECTOR_3D<double> >;
 

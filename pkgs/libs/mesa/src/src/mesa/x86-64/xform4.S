@@ -38,7 +38,7 @@ _mesa_x86_64_transform_points4_general:
  *	rdx = source
  */
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -101,7 +101,7 @@ p4_constants:
 .byte  0x00, 0x00, 0x00, 0x00
 .byte  0x00, 0x00, 0x00, 0x00
 .byte  0x00, 0x00, 0x00, 0x00
-.float 0f+1.0
+.float 1.0
 
 .text
 .align 16
@@ -120,7 +120,7 @@ _mesa_x86_64_transform_points4_3d:
 	movaps 16(%rax), %xmm10
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -180,7 +180,7 @@ p4_3d_done:
 _mesa_x86_64_transform_points4_identity:
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -208,7 +208,7 @@ p4_identity_done:
 _mesa_x86_64_transform_points4_3d_no_rot:
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -272,7 +272,7 @@ p4_3d_no_rot_done:
 _mesa_x86_64_transform_points4_perspective:
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -338,7 +338,7 @@ p4_perspective_done:
 _mesa_x86_64_transform_points4_2d_no_rot:
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
@@ -393,7 +393,7 @@ p4_2d_no_rot_done:
 _mesa_x86_64_transform_points4_2d:
 
 	movl V4F_COUNT(%rdx), %ecx	/* count */
-	movzx V4F_STRIDE(%rdx), %eax	/* stride */
+	movl V4F_STRIDE(%rdx), %eax	/* stride */
 
 	movl %ecx, V4F_COUNT(%rdi)	/* set dest count */
 	movl $4, V4F_SIZE(%rdi)		/* set dest size */
