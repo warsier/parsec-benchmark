@@ -16,7 +16,7 @@
 # To install in $HOME instead of /usr/local, use:
 #    make install prefix=$HOME
 
-LDFLAGS=libz.a
+LDFLAGS += libz.a
 LDSHARED=$(CC)
 
 LIBS=libz.a

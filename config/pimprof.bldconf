@@ -28,7 +28,7 @@ export MAKE="${GNUTOOL_HOME}/bin/${BINARY_PREFIX}make"
 
 # PIMProf flags
 PIMPROF_ROOT="/home/warsier/Documents/PIMProf"
-PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libAnnotationInjection.so"
+PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libAnnotationInjection.so -march=skylake-avx512"
 
 # Flags for increased portability of binaries
 PORTABILITY_FLAGS="-static-libgcc -Wl,--hash-style=both,--as-needed"

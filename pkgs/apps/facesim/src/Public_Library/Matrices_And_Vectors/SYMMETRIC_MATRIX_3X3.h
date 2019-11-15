@@ -280,14 +280,7 @@ public:
 		else return VECTOR_3D<T> (1, 0, 0);
 	}
 
-	void Fast_Solve_Eigenproblem (DIAGONAL_MATRIX_3X3<T>& eigenvalues, MATRIX_3X3<T>& eigenvectors) const
-	{
-		DIAGONAL_MATRIX_3X3<double> eigenvalues_double;
-		MATRIX_3X3<double> eigenvectors_double;
-		Fast_Solve_Eigenproblem_Double (eigenvalues_double, eigenvectors_double);
-		eigenvalues = eigenvalues_double;
-		eigenvectors = eigenvectors_double;
-	}
+	void Fast_Solve_Eigenproblem (DIAGONAL_MATRIX_3X3<T>& eigenvalues, MATRIX_3X3<T>& eigenvectors) const;
 
 	template<class RW>
 	void Read (std::istream &input_stream)
@@ -384,6 +377,15 @@ inline std::ostream& operator<< (std::ostream& output_stream, const SYMMETRIC_MA
 #include "UPPER_TRIANGULAR_MATRIX_3X3.h"
 namespace PhysBAM
 {
+template<class T> 
+void SYMMETRIC_MATRIX_3X3<T>::Fast_Solve_Eigenproblem (DIAGONAL_MATRIX_3X3<T>& eigenvalues, MATRIX_3X3<T>& eigenvectors) const
+{
+	DIAGONAL_MATRIX_3X3<double> eigenvalues_double;
+	MATRIX_3X3<double> eigenvectors_double;
+	Fast_Solve_Eigenproblem_Double (eigenvalues_double, eigenvectors_double);
+	eigenvalues = eigenvalues_double;
+	eigenvectors = eigenvectors_double;
+}
 //#####################################################################
 // Function Conjugate
 //#####################################################################

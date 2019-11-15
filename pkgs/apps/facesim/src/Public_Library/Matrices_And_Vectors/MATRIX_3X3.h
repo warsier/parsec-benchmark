@@ -12,12 +12,13 @@
 #include "../Math_Tools/sqr.h"
 #include "../Math_Tools/constants.h"
 #include "../Math_Tools/exchange.h"
-#include "UPPER_TRIANGULAR_MATRIX_3X3.h"
-#include "SYMMETRIC_MATRIX_3X3.h"
 #include "MATRIX_NXN.h"
 #include "MATRIX_MXN.h"
 namespace PhysBAM
 {
+template<class T> class SYMMETRIC_MATRIX_3X3;
+template<class T> class UPPER_TRIANGULAR_MATRIX_3X3;
+template<class T> class DIAGONAL_MATRIX_3X3;
 
 template<class T>
 class MATRIX_3X3
@@ -36,34 +37,11 @@ public:
 		for (int i = 0; i < 9; i++) x[i] = (T) matrix_input.x[i];
 	}
 
-	MATRIX_3X3 (const DIAGONAL_MATRIX_3X3<T>& matrix_input)
-	{
-		x[0] = matrix_input.x11;
-		x[4] = matrix_input.x22;
-		x[8] = matrix_input.x33;
-		x[1] = x[2] = x[3] = x[5] = x[6] = x[7] = 0;
-	}
+	MATRIX_3X3 (const DIAGONAL_MATRIX_3X3<T>& matrix_input);
 
-	MATRIX_3X3 (const SYMMETRIC_MATRIX_3X3<T>& matrix_input)
-	{
-		x[0] = matrix_input.x11;
-		x[1] = x[3] = matrix_input.x21;
-		x[2] = x[6] = matrix_input.x31;
-		x[4] = matrix_input.x22;
-		x[5] = x[7] = matrix_input.x32;
-		x[8] = matrix_input.x33;
-	}
+	MATRIX_3X3 (const SYMMETRIC_MATRIX_3X3<T>& matrix_input);
 
-	MATRIX_3X3 (const UPPER_TRIANGULAR_MATRIX_3X3<T>& matrix_input)
-	{
-		x[0] = matrix_input.x11;
-		x[3] = matrix_input.x12;
-		x[4] = matrix_input.x22;
-		x[6] = matrix_input.x13;
-		x[7] = matrix_input.x23;
-		x[8] = matrix_input.x33;
-		x[1] = x[2] = x[5] = 0;
-	}
+	MATRIX_3X3 (const UPPER_TRIANGULAR_MATRIX_3X3<T>& matrix_input);
 
 	MATRIX_3X3 (const T x11, const T x21, const T x31, const T x12, const T x22, const T x32, const T x13, const T x23, const T x33)
 	{
@@ -355,36 +333,7 @@ public:
 		return Q;
 	}
 
-	UPPER_TRIANGULAR_MATRIX_3X3<T> R_From_Gram_Schmidt_QR_Factorization() const
-	{
-		int k;
-		MATRIX_3X3<T> Q = *this;
-		UPPER_TRIANGULAR_MATRIX_3X3<T> R;
-		R.x11 = sqrt ( (sqr (Q.x[0]) + sqr (Q.x[1]) + sqr (Q.x[2])));
-		T one_over_r11 = 1 / R.x11;
-
-		for (k = 0; k <= 2; k++) Q.x[k] = one_over_r11 * Q.x[k];
-
-		R.x12 = Q.x[0] * Q.x[3] + Q.x[1] * Q.x[4] + Q.x[2] * Q.x[5];
-		Q.x[3] -= R.x12 * Q.x[0];
-		Q.x[4] -= R.x12 * Q.x[1];
-		Q.x[5] -= R.x12 * Q.x[2];
-		R.x13 = Q.x[0] * Q.x[6] + Q.x[1] * Q.x[7] + Q.x[2] * Q.x[8];
-		Q.x[6] -= R.x13 * Q.x[0];
-		Q.x[7] -= R.x13 * Q.x[1];
-		Q.x[8] -= R.x13 * Q.x[2];
-		R.x22 = sqrt ( (sqr (Q.x[3]) + sqr (Q.x[4]) + sqr (Q.x[5])));
-		T one_over_r22 = 1 / R.x22;
-
-		for (k = 3; k <= 5; k++) Q.x[k] = one_over_r22 * Q.x[k];
-
-		R.x23 = Q.x[3] * Q.x[6] + Q.x[4] * Q.x[7] + Q.x[5] * Q.x[8];
-		Q.x[6] -= R.x23 * Q.x[3];
-		Q.x[7] -= R.x23 * Q.x[4];
-		Q.x[8] -= R.x23 * Q.x[5];
-		R.x33 = sqrt ( (sqr (Q.x[6]) + sqr (Q.x[7]) + sqr (Q.x[8])));
-		return R;
-	}
+	UPPER_TRIANGULAR_MATRIX_3X3<T> R_From_Gram_Schmidt_QR_Factorization() const;
 
 	MATRIX_3X3<T> Higham_Iterate (const T tolerance = 1e-5, const int max_iterations = 20, const bool exit_on_max_iterations = false) const
 	{
@@ -418,32 +367,15 @@ public:
 				      x[1] * x[5] - x[2] * x[4], -x[0] * x[5] + x[2] * x[3], x[0] * x[4] - x[1] * x[3]);
 	}
 
-	SYMMETRIC_MATRIX_3X3<T> Outer_Product_Matrix() const
-	{
-		return SYMMETRIC_MATRIX_3X3<T> (x[0] * x[0] + x[3] * x[3] + x[6] * x[6], x[1] * x[0] + x[4] * x[3] + x[7] * x[6], x[2] * x[0] + x[5] * x[3] + x[8] * x[6],
-						x[1] * x[1] + x[4] * x[4] + x[7] * x[7], x[2] * x[1] + x[5] * x[4] + x[8] * x[7], x[2] * x[2] + x[5] * x[5] + x[8] * x[8]);
-	}
+	SYMMETRIC_MATRIX_3X3<T> Outer_Product_Matrix() const;
 
-	SYMMETRIC_MATRIX_3X3<T> Normal_Equations_Matrix() const // 18 mults, 12 adds
-	{
-		return SYMMETRIC_MATRIX_3X3<T> (x[0] * x[0] + x[1] * x[1] + x[2] * x[2], x[3] * x[0] + x[4] * x[1] + x[5] * x[2], x[6] * x[0] + x[7] * x[1] + x[8] * x[2],
-						x[3] * x[3] + x[4] * x[4] + x[5] * x[5], x[6] * x[3] + x[7] * x[4] + x[8] * x[5], x[6] * x[6] + x[7] * x[7] + x[8] * x[8]);
-	}
+	SYMMETRIC_MATRIX_3X3<T> Normal_Equations_Matrix() const; // 18 mults, 12 adds
 
-	SYMMETRIC_MATRIX_3X3<T> Symmetric_Part() const
-	{
-		return SYMMETRIC_MATRIX_3X3<T> (x[0], (T).5 * (x[1] + x[3]), (T).5 * (x[2] + x[6]), x[4], (T).5 * (x[5] + x[7]), x[8]);
-	}
+	SYMMETRIC_MATRIX_3X3<T> Symmetric_Part() const;
 
-	SYMMETRIC_MATRIX_3X3<T> Twice_Symmetric_Part() const // 3 mults, 3 adds
-	{
-		return SYMMETRIC_MATRIX_3X3<T> (2 * x[0], x[1] + x[3], x[2] + x[6], 2 * x[4], x[5] + x[7], 2 * x[8]);
-	}
+	SYMMETRIC_MATRIX_3X3<T> Twice_Symmetric_Part() const; // 3 mults, 3 adds
 
-	DIAGONAL_MATRIX_3X3<T> Diagonal_Part() const
-	{
-		return DIAGONAL_MATRIX_3X3<T> (x[0], x[4], x[8]);
-	}
+	DIAGONAL_MATRIX_3X3<T> Diagonal_Part() const;
 
 	void Normalize_Columns()
 	{
@@ -571,10 +503,7 @@ public:
 		return (T).5 * VECTOR_3D<T> (x[5] - x[7], x[6] - x[2], x[1] - x[3]);
 	}
 
-	static SYMMETRIC_MATRIX_3X3<T> Right_Multiply_With_Symmetric_Result (const MATRIX_3X3<T>& A, const DIAGONAL_MATRIX_3X3<T>& B)
-	{
-		return SYMMETRIC_MATRIX_3X3<T> (B.x11 * A.x[0], B.x11 * A.x[1], B.x11 * A.x[2], B.x22 * A.x[4], B.x22 * A.x[5], B.x33 * A.x[8]);
-	}
+	static SYMMETRIC_MATRIX_3X3<T> Right_Multiply_With_Symmetric_Result (const MATRIX_3X3<T>& A, const DIAGONAL_MATRIX_3X3<T>& B);
 
 	T Max_Abs_Element() const
 	{
@@ -591,24 +520,11 @@ public:
 		return MATRIX_3X3<T> (x[0] * A.x11, x[1] * A.x11, x[2] * A.x11, x[3] * A.x22, x[4] * A.x22, x[5] * A.x22, x[6] * A.x33, x[7] * A.x33, x[8] * A.x33);
 	}
 
-	MATRIX_3X3<T> operator* (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const // 18 mults, 8 adds
-	{
-		return MATRIX_3X3<T> (x[0] * A.x11, x[1] * A.x11, x[2] * A.x11, x[0] * A.x12 + x[3] * A.x22, x[1] * A.x12 + x[4] * A.x22, x[2] * A.x12 + x[5] * A.x22,
-				      x[0] * A.x13 + x[3] * A.x23 + x[6] * A.x33, x[1] * A.x13 + x[4] * A.x23 + x[7] * A.x33, x[2] * A.x13 + x[5] * A.x23 + x[8] * A.x33);
-	}
+	MATRIX_3X3<T> operator* (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const; // 18 mults, 8 adds
 
-	MATRIX_3X3<T> operator* (const SYMMETRIC_MATRIX_3X3<T>& A) const // 27 mults, 18 adds
-	{
-		return MATRIX_3X3<T> (x[0] * A.x11 + x[3] * A.x21 + x[6] * A.x31, x[1] * A.x11 + x[4] * A.x21 + x[7] * A.x31, x[2] * A.x11 + x[5] * A.x21 + x[8] * A.x31,
-				      x[0] * A.x21 + x[3] * A.x22 + x[6] * A.x32, x[1] * A.x21 + x[4] * A.x22 + x[7] * A.x32, x[2] * A.x21 + x[5] * A.x22 + x[8] * A.x32,
-				      x[0] * A.x31 + x[3] * A.x32 + x[6] * A.x33, x[1] * A.x31 + x[4] * A.x32 + x[7] * A.x33, x[2] * A.x31 + x[5] * A.x32 + x[8] * A.x33);
-	}
+	MATRIX_3X3<T> operator* (const SYMMETRIC_MATRIX_3X3<T>& A) const; // 27 mults, 18 adds
 
-	MATRIX_3X3<T> Multiply_With_Transpose (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const
-	{
-		return MATRIX_3X3<T> (x[0] * A.x11 + x[3] * A.x12 + x[6] * A.x13, x[1] * A.x11 + x[4] * A.x12 + x[7] * A.x13, x[2] * A.x11 + x[5] * A.x12 + x[8] * A.x13,
-				      x[3] * A.x22 + x[6] * A.x23, x[4] * A.x22 + x[7] * A.x23, x[5] * A.x22 + x[8] * A.x23, x[6] * A.x33, x[7] * A.x33, x[8] * A.x33);
-	}
+	MATRIX_3X3<T> Multiply_With_Transpose (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const;
 
 	MATRIX_3X3<T> Multiply_With_Transpose (const MATRIX_3X3<T>& A) const
 	{
@@ -637,15 +553,7 @@ public:
 		return U.Multiply_With_Transpose (V);
 	}
 
-	void Fast_Singular_Value_Decomposition (MATRIX_3X3<T>& U, DIAGONAL_MATRIX_3X3<T>& singular_values, MATRIX_3X3<T>& V) const
-	{
-		MATRIX_3X3<double> U_double, V_double;
-		DIAGONAL_MATRIX_3X3<double> singular_values_double;
-		Fast_Singular_Value_Decomposition_Double (U_double, singular_values_double, V_double);
-		U = U_double;
-		singular_values = singular_values_double;
-		V = V_double;
-	}
+	void Fast_Singular_Value_Decomposition (MATRIX_3X3<T>& U, DIAGONAL_MATRIX_3X3<T>& singular_values, MATRIX_3X3<T>& V) const;
 
 	template<class RW>
 	void Read (std::istream &input_stream)
@@ -664,6 +572,147 @@ public:
 	T Tetrahedron_Minimum_Altitude() const;
 //#####################################################################
 };
+
+#include "SYMMETRIC_MATRIX_3X3.h"
+#include "UPPER_TRIANGULAR_MATRIX_3X3.h"
+
+// define function outside declaration
+
+template<class T>
+MATRIX_3X3<T>::MATRIX_3X3 (const DIAGONAL_MATRIX_3X3<T>& matrix_input)
+{
+	x[0] = matrix_input.x11;
+	x[4] = matrix_input.x22;
+	x[8] = matrix_input.x33;
+	x[1] = x[2] = x[3] = x[5] = x[6] = x[7] = 0;
+}
+
+template<class T>
+MATRIX_3X3<T>::MATRIX_3X3 (const SYMMETRIC_MATRIX_3X3<T>& matrix_input)
+{
+	x[0] = matrix_input.x11;
+	x[1] = x[3] = matrix_input.x21;
+	x[2] = x[6] = matrix_input.x31;
+	x[4] = matrix_input.x22;
+	x[5] = x[7] = matrix_input.x32;
+	x[8] = matrix_input.x33;
+}
+
+template<class T>
+MATRIX_3X3<T>::MATRIX_3X3 (const UPPER_TRIANGULAR_MATRIX_3X3<T>& matrix_input)
+{
+	x[0] = matrix_input.x11;
+	x[3] = matrix_input.x12;
+	x[4] = matrix_input.x22;
+	x[6] = matrix_input.x13;
+	x[7] = matrix_input.x23;
+	x[8] = matrix_input.x33;
+	x[1] = x[2] = x[5] = 0;
+}
+
+template<class T>
+void MATRIX_3X3<T>::Fast_Singular_Value_Decomposition (MATRIX_3X3<T>& U, DIAGONAL_MATRIX_3X3<T>& singular_values, MATRIX_3X3<T>& V) const
+{
+	MATRIX_3X3<double> U_double, V_double;
+	DIAGONAL_MATRIX_3X3<double> singular_values_double;
+	Fast_Singular_Value_Decomposition_Double (U_double, singular_values_double, V_double);
+	U = U_double;
+	singular_values = singular_values_double;
+	V = V_double;
+}
+
+template<class T>
+UPPER_TRIANGULAR_MATRIX_3X3<T> MATRIX_3X3<T>::R_From_Gram_Schmidt_QR_Factorization() const
+{
+	int k;
+	MATRIX_3X3<T> Q = *this;
+	UPPER_TRIANGULAR_MATRIX_3X3<T> R;
+	R.x11 = sqrt ( (sqr (Q.x[0]) + sqr (Q.x[1]) + sqr (Q.x[2])));
+	T one_over_r11 = 1 / R.x11;
+
+	for (k = 0; k <= 2; k++) Q.x[k] = one_over_r11 * Q.x[k];
+
+	R.x12 = Q.x[0] * Q.x[3] + Q.x[1] * Q.x[4] + Q.x[2] * Q.x[5];
+	Q.x[3] -= R.x12 * Q.x[0];
+	Q.x[4] -= R.x12 * Q.x[1];
+	Q.x[5] -= R.x12 * Q.x[2];
+	R.x13 = Q.x[0] * Q.x[6] + Q.x[1] * Q.x[7] + Q.x[2] * Q.x[8];
+	Q.x[6] -= R.x13 * Q.x[0];
+	Q.x[7] -= R.x13 * Q.x[1];
+	Q.x[8] -= R.x13 * Q.x[2];
+	R.x22 = sqrt ( (sqr (Q.x[3]) + sqr (Q.x[4]) + sqr (Q.x[5])));
+	T one_over_r22 = 1 / R.x22;
+
+	for (k = 3; k <= 5; k++) Q.x[k] = one_over_r22 * Q.x[k];
+
+	R.x23 = Q.x[3] * Q.x[6] + Q.x[4] * Q.x[7] + Q.x[5] * Q.x[8];
+	Q.x[6] -= R.x23 * Q.x[3];
+	Q.x[7] -= R.x23 * Q.x[4];
+	Q.x[8] -= R.x23 * Q.x[5];
+	R.x33 = sqrt ( (sqr (Q.x[6]) + sqr (Q.x[7]) + sqr (Q.x[8])));
+	return R;
+}
+
+template<class T>
+SYMMETRIC_MATRIX_3X3<T> MATRIX_3X3<T>::Outer_Product_Matrix() const
+{
+	return SYMMETRIC_MATRIX_3X3<T> (x[0] * x[0] + x[3] * x[3] + x[6] * x[6], x[1] * x[0] + x[4] * x[3] + x[7] * x[6], x[2] * x[0] + x[5] * x[3] + x[8] * x[6],
+					x[1] * x[1] + x[4] * x[4] + x[7] * x[7], x[2] * x[1] + x[5] * x[4] + x[8] * x[7], x[2] * x[2] + x[5] * x[5] + x[8] * x[8]);
+}
+
+template<class T>
+SYMMETRIC_MATRIX_3X3<T> MATRIX_3X3<T>::Normal_Equations_Matrix() const // 18 mults, 12 adds
+{
+	return SYMMETRIC_MATRIX_3X3<T> (x[0] * x[0] + x[1] * x[1] + x[2] * x[2], x[3] * x[0] + x[4] * x[1] + x[5] * x[2], x[6] * x[0] + x[7] * x[1] + x[8] * x[2],
+					x[3] * x[3] + x[4] * x[4] + x[5] * x[5], x[6] * x[3] + x[7] * x[4] + x[8] * x[5], x[6] * x[6] + x[7] * x[7] + x[8] * x[8]);
+}
+
+template<class T>
+DIAGONAL_MATRIX_3X3<T> MATRIX_3X3<T>::Diagonal_Part() const
+{
+	return DIAGONAL_MATRIX_3X3<T> (x[0], x[4], x[8]);
+}
+
+template<class T>
+SYMMETRIC_MATRIX_3X3<T> MATRIX_3X3<T>::Symmetric_Part() const
+{
+	return SYMMETRIC_MATRIX_3X3<T> (x[0], (T).5 * (x[1] + x[3]), (T).5 * (x[2] + x[6]), x[4], (T).5 * (x[5] + x[7]), x[8]);
+}
+
+template<class T>
+SYMMETRIC_MATRIX_3X3<T> MATRIX_3X3<T>::Twice_Symmetric_Part() const // 3 mults, 3 adds
+{
+	return SYMMETRIC_MATRIX_3X3<T> (2 * x[0], x[1] + x[3], x[2] + x[6], 2 * x[4], x[5] + x[7], 2 * x[8]);
+}
+
+template<class T>
+SYMMETRIC_MATRIX_3X3<T> MATRIX_3X3<T>::Right_Multiply_With_Symmetric_Result (const MATRIX_3X3<T>& A, const DIAGONAL_MATRIX_3X3<T>& B)
+{
+	return SYMMETRIC_MATRIX_3X3<T> (B.x11 * A.x[0], B.x11 * A.x[1], B.x11 * A.x[2], B.x22 * A.x[4], B.x22 * A.x[5], B.x33 * A.x[8]);
+}
+
+template<class T>
+MATRIX_3X3<T> MATRIX_3X3<T>::operator* (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const // 18 mults, 8 adds
+{
+	return MATRIX_3X3<T> (x[0] * A.x11, x[1] * A.x11, x[2] * A.x11, x[0] * A.x12 + x[3] * A.x22, x[1] * A.x12 + x[4] * A.x22, x[2] * A.x12 + x[5] * A.x22,
+			      x[0] * A.x13 + x[3] * A.x23 + x[6] * A.x33, x[1] * A.x13 + x[4] * A.x23 + x[7] * A.x33, x[2] * A.x13 + x[5] * A.x23 + x[8] * A.x33);
+}
+
+template<class T>
+MATRIX_3X3<T> MATRIX_3X3<T>::operator* (const SYMMETRIC_MATRIX_3X3<T>& A) const // 27 mults, 18 adds
+{
+	return MATRIX_3X3<T> (x[0] * A.x11 + x[3] * A.x21 + x[6] * A.x31, x[1] * A.x11 + x[4] * A.x21 + x[7] * A.x31, x[2] * A.x11 + x[5] * A.x21 + x[8] * A.x31,
+			      x[0] * A.x21 + x[3] * A.x22 + x[6] * A.x32, x[1] * A.x21 + x[4] * A.x22 + x[7] * A.x32, x[2] * A.x21 + x[5] * A.x22 + x[8] * A.x32,
+			      x[0] * A.x31 + x[3] * A.x32 + x[6] * A.x33, x[1] * A.x31 + x[4] * A.x32 + x[7] * A.x33, x[2] * A.x31 + x[5] * A.x32 + x[8] * A.x33);
+}
+
+template<class T>
+MATRIX_3X3<T> MATRIX_3X3<T>::Multiply_With_Transpose (const UPPER_TRIANGULAR_MATRIX_3X3<T>& A) const
+{
+	return MATRIX_3X3<T> (x[0] * A.x11 + x[3] * A.x12 + x[6] * A.x13, x[1] * A.x11 + x[4] * A.x12 + x[7] * A.x13, x[2] * A.x11 + x[5] * A.x12 + x[8] * A.x13,
+			      x[3] * A.x22 + x[6] * A.x23, x[4] * A.x22 + x[7] * A.x23, x[5] * A.x22 + x[8] * A.x23, x[6] * A.x33, x[7] * A.x33, x[8] * A.x33);
+}
+
 // global functions
 template<class T>
 inline MATRIX_3X3<T> operator+ (const T a, const MATRIX_3X3<T>& A)
