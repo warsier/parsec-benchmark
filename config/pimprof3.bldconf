@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# CC_HOME is installation root of the C compiler
+export CC_HOME="/usr/lib/llvm-7"
+# BINUTIL_HOME is installation root of the GNU binutils
+export BINUTIL_HOME="/usr"
+# GNUTOOL_HOME is installation root of the GNU tools
+export GNUTOOL_HOME="/usr"
+# BINARY_PREFIX is the string which is used as prefix for the GNU binaries
+export BINARY_PREFIX=""
+
+# Compilers and preprocessors
+export CC="${CC_HOME}/bin/clang"
+export CXX="${CC_HOME}/bin/clang++"
+export CPP="${CC_HOME}/bin/clang-cpp"
+export CXXCPP=""
+
+# GNU Binutils
+export LD="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ld"
+export AS="${BINUTIL_HOME}/bin/${BINARY_PREFIX}as"
+export AR="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ar"
+export RANLIB="${BINUTIL_HOME}/bin/${BINARY_PREFIX}ranlib"
+export STRIP="${BINUTIL_HOME}/bin/${BINARY_PREFIX}strip"
+
+# GNU Tools
+export M4="${GNUTOOL_HOME}/bin/${BINARY_PREFIX}m4"
+export MAKE="${GNUTOOL_HOME}/bin/${BINARY_PREFIX}make"
+
+# PIMProf flags
+PIMPROF_ROOT="/home/warsier/Documents/PIMProf"
+PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libOffloaderInjection.so"
+
+# Flags for increased portability of binaries
+PORTABILITY_FLAGS="-static-libgcc -Wl,--hash-style=both,--as-needed"
+
+# Arguments to use
+export CFLAGS="${PIMPROF_FLAGS} -O3 -g -funroll-loops -fprefetch-loop-arrays ${PORTABILITY_FLAGS}"
+export CXXFLAGS="${PIMPROF_FLAGS} -O3 -g -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions ${PORTABILITY_FLAGS}"
+export LDCFLAGS="-O3 -g -funroll-loops -fprefetch-loop-arrays ${PORTABILITY_FLAGS}"
+export LDCXXFLAGS="-O3 -g -funroll-loops -fprefetch-loop-arrays -fpermissive -fno-exceptions ${PORTABILITY_FLAGS}"
+export CPPFLAGS=""
+export CXXCPPFLAGS=""
+export LDFLAGS="-L${CC_HOME}/lib64 -L${CC_HOME}/lib -L${PIMPROF_ROOT}/build/LLVMAnalysis -Wl,-rpath=${PIMPROF_ROOT}/build/LLVMAnalysis -lPIMProfOffloader"
+export LIBS="-lPIMProfOffloader"
+export EXTRA_LIBS=""
+export PARMACS_MACRO_FILE="pthreads"
+
+
+# Java
+export JAVA_HOME="/usr"
+export JAVAC="${JAVA_HOME}/bin/javac"
+
+# Version numbers
+if [ -x ${CC} ]; then
+  CC_ver=$(${CC} --version)
+else
+  CC_ver=""
+fi
+if [ -x ${CXX} ]; then
+  CXX_ver=$(${CXX} --version)
+else
+  CXX_ver=""
+fi
+if [ -x ${LD} ]; then
+  LD_ver=$(${LD} --version)
+else
+  LD_ver=""
+fi
+if [ -x ${JAVAC} ]; then
+  JAVAC_ver=$(${JAVAC} -version 2>&1)
+else
+  JAVAC_ver=""
+fi
+
