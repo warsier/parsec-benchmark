@@ -18,7 +18,7 @@
 build_deps="gsl libjpeg"
 
 # Temporary variable with all flags
-ferret_flags="CFLAGS=\"-DHUGE=2147483648 -I${PARSECDIR}/pkgs/libs/gsl/inst/${PARSECPLAT}/include -I${PARSECDIR}/pkgs/libs/libjpeg/inst/${PARSECPLAT}/include ${CFLAGS}\" LDFLAGS=\"-L${PARSECDIR}/pkgs/libs/gsl/inst/${PARSECPLAT}/lib -L${PARSECDIR}/pkgs/libs/libjpeg/inst/${PARSECPLAT}/lib ${LDFLAGS}\""
+ferret_flags="CFLAGS=\"-DHUGE=2147483648 -I${PARSECDIR}/pkgs/libs/gsl/inst/${PARSECPLAT}/include -I${PARSECDIR}/pkgs/libs/libjpeg/inst/${PARSECPLAT}/include ${CFLAGS}\" LDFLAGS=\"-L${PARSECDIR}/pkgs/libs/gsl/inst/${PARSECPLAT}/lib -L${PARSECDIR}/pkgs/libs/libjpeg/inst/${PARSECPLAT}/lib ${LDFLAGS}\" PIMPROFDECISION=${PIMPROF_DECISION_ROOT}/ferret_defaultconfig_32.out"
 
 # Environment to use for configure script and Makefile
 build_env="version=\"pthreads\" ${ferret_flags}"
