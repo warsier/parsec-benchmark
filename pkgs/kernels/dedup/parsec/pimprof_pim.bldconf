@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# gcc.bldconf - configuration file for PARSEC
+
+# Default parallelization is pthreads
+source ${PARSECDIR}/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf
+
+build_env+=" PIMPROFDECISION=${PARSECDIR}/pimprof-decision/dedup.out"
