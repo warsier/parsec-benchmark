@@ -40,7 +40,7 @@ export STRIP="${TARGET_CROSS}strip"
 
 # PIMProf flags
 PIMPROF_ROOT="/home/warsier/Documents/PIMProf_solver"
-PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libOffloaderInjection.so"
+PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libOffloaderInjection.so -g"
 export PIMPROFINJECTMODE=SNIPER
 
 # Arguments to use
