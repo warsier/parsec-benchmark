@@ -40,8 +40,8 @@ export STRIP="${TARGET_CROSS}strip"
 
 # PIMProf flags
 PIMPROF_ROOT="/home/warsier/Documents/PIMProf_solver"
-PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libAnnotationInjection.so"
-export PIMPROFINJECTMODE=SNIPER2
+PIMPROF_FLAGS="-Xclang -load -Xclang ${PIMPROF_ROOT}/build/LLVMAnalysis/libAnnotationInjection.so -g"
+export PIMPROFINJECTMODE=SNIPER
 
 # Arguments to use
 export CFLAGS=" $CFLAGS ${PIMPROF_FLAGS}"
